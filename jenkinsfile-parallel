@@ -1,0 +1,47 @@
+pipeline{
+
+    agent any
+
+    stages{
+
+        stage('Build'){
+
+            steps{
+
+                echo 'Build Stage'
+
+            }
+
+        }
+
+        stage('Testing'){
+
+            parallel{
+
+                stage('sanity'){
+
+                    steps{
+
+                        echo 'Sanity'
+
+                    }
+
+                }
+
+                stage ('Regression'){
+
+                    steps{
+
+                        echo 'Regression'
+
+                    }
+
+                }    
+
+            }
+
+        }
+
+    }
+
+}
